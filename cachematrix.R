@@ -12,25 +12,25 @@ makeCacheMatrix <- function(x = matrix()) {
   ## Returns:
   ##   A list object that can cache results for cacheSolve.
   
-  inverse <- NULL # inverse should be handled via getInverse and setInverse
+  inverse <- NULL ## inverse should be handled via getInverse and setInverse
   
-  # init x, clear inverse
-  # NOTE: <<- means we set x defined in environment
+  ## init x, clear inverse
+  ## NOTE: <<- means we set x defined in environment
   set <- function(y) {
     x <<- y 
     inverse <<- NULL
   }
   
-  # get the matrix to take the inverse of
+  ## get the matrix to take the inverse of
   get <- function() { x }
   
-  # set the inverse
-  set.inverse <- function(inverse) { inverse <<- inverse } # NOTE: <<- will assign value to inverse declared above
+  ## set the inverse
+  set.inverse <- function(inverse) { inverse <<- inverse } ## NOTE: <<- will assign value to inverse declared above
   
-  # get the inverse
+  ## get the inverse
   get.inverse <- function() { inverse }
   
-  # combine above methods and return it all as a list, which we use as a struct
+  ## combine above methods and return it all as a list, which we use as a struct
   list(set = set, get = get,
        set.inverse = set.inverse,
        get.inverse = get.inverse)
@@ -41,8 +41,8 @@ cacheSolve <- function(x, ...) {
   ## Computes a matrix inverse and caches its value in a makeCacheMatrix list.
   ## Usage: 
   ##  >> cache <- makeCacheMatrix(matrix.to.solve)
-  ##  >> cacheSolve(cache) # initial call to solve
-  ##  >> cacheSolve(cache) # 2nd call, will access cached value
+  ##  >> cacheSolve(cache) ## initial call to solve
+  ##  >> cacheSolve(cache) ## 2nd call, will access cached value
   ##
   ## Args:
   ##   x: list object created by makeCacheMatrix(mat) where mat is the matrix
